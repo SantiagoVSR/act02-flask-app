@@ -10,7 +10,6 @@ def home():
     response = requests.get(url)
     contenido = response.text
 
-    
     lineas = contenido.strip().split('\n')
     encabezado = lineas[0].split('|')
     datos_filtrados = []
@@ -20,7 +19,9 @@ def home():
         if partes[0][0] in ['3', '4', '5', '7']:
             datos_filtrados.append(partes)
 
-    
+    # Ordenar los datos filtrados en orden descendente por la primera columna
+    datos_filtrados.sort(key=lambda x: x[0], reverse=True)
+
     tabla_html = '<table border="1" cellpadding="5" cellspacing="0">'
     tabla_html += '<tr>' + ''.join(f'<th>{col}</th>' for col in encabezado) + '</tr>'
     for fila in datos_filtrados:
@@ -34,4 +35,4 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run( host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
