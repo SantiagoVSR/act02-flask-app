@@ -19,8 +19,8 @@ def home():
         if partes[0][0] in ['3', '4', '5', '7']:
             datos_filtrados.append(partes)
 
-    # Ordenar los datos filtrados en orden descendente por la primera columna
-    datos_filtrados.sort(key=lambda x: x[0], reverse=True)
+    # Ordenamos los datos por la primera columna, asumiendo que es un número
+    datos_filtrados.sort(key=lambda x: int(x[0]))
 
     tabla_html = '<table border="1" cellpadding="5" cellspacing="0">'
     tabla_html += '<tr>' + ''.join(f'<th>{col}</th>' for col in encabezado) + '</tr>'
