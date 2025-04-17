@@ -2,7 +2,7 @@ from flask import Flask
 from datetime import datetime
 import requests
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 @app.route('/')
 def home():
@@ -33,5 +33,5 @@ def home():
     return f'<h2>¡Hola, Loja!</h2><p><b>{fecha_formateada}</b></p>{tabla_html}'
 
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run( host='0.0.0.0', port=5000)
